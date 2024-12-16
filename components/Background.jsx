@@ -11,6 +11,7 @@ export default Background;
 
 const styles = StyleSheet.create({
   image: {
+    width: "100%",
     flex: 1,
     justifyContent: "flex-end",
   },

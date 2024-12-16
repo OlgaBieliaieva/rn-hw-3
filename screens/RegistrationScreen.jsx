@@ -16,7 +16,7 @@ import BgImg from "../assets/images/bg-img.jpg";
 import AddIcon from "../assets/images/add.png";
 import { colors } from "../styles/global";
 
-const RegistrationScreen = () => {
+const RegistrationScreen = ({ navigation }) => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,7 +70,12 @@ const RegistrationScreen = () => {
             <MainButton action={handleSubmit}>
               <Text style={styles.formBtnText}>Зареєструватися</Text>
             </MainButton>
-            <AuthVariants textVariant="Вже є акаунт?" textAction="Увійти" />
+            <AuthVariants
+              textVariant="Вже є акаунт?"
+              textAction="Увійти"
+              navigation={navigation}
+              targetNav="Login"
+            />
           </View>
         </Background>
       </View>
@@ -81,12 +86,11 @@ export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
     flex: 1,
   },
   contentContainer: {
     backgroundColor: colors.white,
-    height: 549,
+    height: "65%",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingHorizontal: 16,

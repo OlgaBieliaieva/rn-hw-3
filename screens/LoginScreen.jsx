@@ -14,16 +14,13 @@ import AuthVariants from "../components/AuthVariants";
 import BgImg from "../assets/images/bg-img.jpg";
 import { colors } from "../styles/global";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  console.log(navigation);
 
   function handleSubmit() {
-    const credentials = {
-      email,
-      password,
-    };
-    console.log(credentials);
+    navigation.replace("Home");
 
     Alert.alert(`Вітаємо!`);
     setEmail("");
@@ -58,6 +55,8 @@ const LoginScreen = () => {
             <AuthVariants
               textVariant="Немає акаунту?"
               textAction="Зареєструватися"
+              navigation={navigation}
+              targetNav="Registration"
             />
           </View>
         </Background>
@@ -69,12 +68,13 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   contentContainer: {
     backgroundColor: colors.white,
-    height: 489,
+    height: "60%",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingHorizontal: 16,

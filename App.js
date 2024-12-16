@@ -1,7 +1,12 @@
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
+import StackNavigator from "./navigation/StackNavigator";
+import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import LoginScreen from "./screens/LoginScreen";
 
@@ -19,21 +24,23 @@ export default function App() {
     }
   }, [fontsLoaded]);
 
-  if(!fontsLoaded){
-    return <ActivityIndicator size="large" color="#FF6C00" />
+  if (!fontsLoaded) {
+    return <ActivityIndicator size="large" color="#FF6C00" />;
   }
 
   return (
-    <View style={styles.container}>
-      {/* <RegistrationScreen /> */}
-      <LoginScreen/>
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+      {/* // <BottomTabNavigator/> */}
+      {/* // <RegistrationScreen />  */}
+      {/* <LoginScreen /> */}
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
